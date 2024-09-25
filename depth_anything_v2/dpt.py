@@ -191,7 +191,8 @@ class DepthAnythingV2(nn.Module):
         
         depth = F.interpolate(depth[:, None], (h, w), mode="bilinear", align_corners=True)[0, 0]
         
-        return depth.cpu().numpy()
+        return depth
+        # return depth.cpu().numpy()
     
     def image2tensor(self, raw_image, input_size=518):        
         transform = Compose([
@@ -210,7 +211,8 @@ class DepthAnythingV2(nn.Module):
         
         h, w = raw_image.shape[:2]
         
-        image = cv2.cvtColor(raw_image, cv2.COLOR_BGR2RGB) / 255.0
+        image = image / 255.0
+        # image = cv2.cvtColor(raw_image, cv2.COLOR_BGR2RGB) / 255.0
         
         image = transform({'image': image})['image']
         image = torch.from_numpy(image).unsqueeze(0)
