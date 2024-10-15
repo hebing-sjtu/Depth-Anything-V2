@@ -1,2 +1,3 @@
 # Ignore checkpoints directory
-submodules/depth/checkpoints/
+checkpoints/
+depth_anything_v2/__pycache__
