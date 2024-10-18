@@ -122,6 +122,18 @@ class Resize(object):
         return sample
 
 
+class BGR2RGB(object):
+    """BGR2RGB
+    """
+
+    def __init__(self):
+        pass
+
+    def __call__(self, sample):
+        sample["image"] = cv2.cvtColor(sample["image"], cv2.COLOR_BGR2RGB) / 255.0
+        return sample
+
+
 class NormalizeImage(object):
     """Normlize image by given mean and std.
     """

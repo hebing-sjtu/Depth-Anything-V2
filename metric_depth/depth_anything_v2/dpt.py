@@ -192,6 +192,7 @@ class DepthAnythingV2(nn.Module):
         
         depth = F.interpolate(depth[:, None], (h, w), mode="bilinear", align_corners=True)[0, 0]
         
+        # return depth
         return depth.cpu().numpy()
     
     def image2tensor(self, raw_image, input_size=518):        
