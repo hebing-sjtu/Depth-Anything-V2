@@ -205,14 +205,14 @@ class DepthAnythingV2(nn.Module):
                 resize_method='lower_bound',
                 image_interpolation_method=cv2.INTER_CUBIC,
             ),
-            BGR2RGB(),
+            # BGR2RGB(),
             NormalizeImage(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
             PrepareForNet(),
         ])
         
         h, w = raw_image.shape[:2]
         
-        # image = raw_image / 255.0
+        image = raw_image / 255.0
         # image = cv2.cvtColor(raw_image, cv2.COLOR_BGR2RGB) / 255.0
         
         image = transform({'image': image})['image']
