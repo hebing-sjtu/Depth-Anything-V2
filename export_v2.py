@@ -33,7 +33,7 @@ def main():
     dummy_input = torch.ones((3, args.input_size, args.input_size)).unsqueeze(0)
 
     # Provide an example input to the model, this is necessary for exporting to ONNX
-    example_output = depth_anything.forward(dummy_input)
+    # example_output = depth_anything.forward(dummy_input)
 
     onnx_path = f'depth_anything_v2_{args.encoder}.onnx'
 

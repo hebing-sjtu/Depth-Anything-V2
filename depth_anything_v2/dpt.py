@@ -212,10 +212,9 @@ class DepthAnythingV2(nn.Module):
         
         h, w = raw_image.shape[:2]
         
-        image = raw_image / 255.0
         # image = cv2.cvtColor(raw_image, cv2.COLOR_BGR2RGB) / 255.0
         
-        image = transform({'image': image})['image']
+        image = transform({'image': raw_image})['image']
         image = torch.from_numpy(image).unsqueeze(0)
         
         DEVICE = 'cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu'
